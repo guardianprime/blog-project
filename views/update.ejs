@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>update form</title>
+    <title>Edit article</title>
   </head>
   <body>
     <form action="/admin/update/<%= post._id %>" method="POST">
@@ -16,7 +16,7 @@
         required
       />
       <textarea name="content" required><%= post.content %></textarea>
-      <button type="submit">Update Post</button>
+      <button type="submit">Update</button>
     </form>
   </body>
 </html>

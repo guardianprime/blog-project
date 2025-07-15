@@ -2,10 +2,15 @@ const express = require("express");
 const adminRouter = require("./routes/admin");
 require("dotenv").config();
 
+const db = require("./db");
+
 const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
+
+db.connectToMongoDB();
+
 app.use("/admin", adminRouter);
 
 app.set("view engine", "ejs");

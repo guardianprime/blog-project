@@ -2,16 +2,12 @@ const express = require("express");
 
 const adminRouter = express.Router();
 
-adminRouter.get("/", (req, res) => {
-  res.render("admin"); // Render the admin dashboard
-});
+adminRouter.get("/", adminController.getAdminDashboard);
 
-adminRouter.get("/login", (req, res) => {
-  res.render("login"); // Render the login page
-});
+adminRouter.get("/login", adminController.getLoginPage);
 
-adminRouter.get("/update", (req, res) => {
-  res.render("update"); // Render the update page
-});
+adminRouter.get("/update", adminController.getUpdatePage);
+
+adminRouter.get("/new", adminController.getNewPage);
 
 module.exports = adminRouter;
