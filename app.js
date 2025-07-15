@@ -7,8 +7,12 @@ const app = express();
 
 app.use(express.json());
 app.use("/admin", adminRouter);
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
 app.get("/", (req, res) => {
-  res.send("WELCOME TO THE MAIN PAGE");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
