@@ -1,13 +1,19 @@
 const express = require("express");
+const {
+  getAdminDashboard,
+  getLoginPage,
+  getUpdatePage,
+  getNewPage,
+} = require("../controllers/adminController");
 
 const adminRouter = express.Router();
 
-adminRouter.get("/", adminController.getAdminDashboard);
+adminRouter.get("/", getAdminDashboard);
 
-adminRouter.get("/login", adminController.getLoginPage);
+adminRouter.get("/login", getLoginPage);
 
-adminRouter.get("/update", adminController.getUpdatePage);
+adminRouter.get("/update", getUpdatePage);
 
-adminRouter.get("/new", adminController.getNewPage);
+adminRouter.get("/new", getNewPage);
 
 module.exports = adminRouter;

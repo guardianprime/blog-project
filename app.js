@@ -1,5 +1,6 @@
 const express = require("express");
 const adminRouter = require("./routes/admin");
+const postRouter = require("./routes/posts");
 require("dotenv").config();
 
 const db = require("./db");
@@ -12,13 +13,10 @@ app.use(express.json());
 db.connectToMongoDB();
 
 app.use("/admin", adminRouter);
+app.use("/", postRouter);
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT: http://localhost:${PORT}`);
