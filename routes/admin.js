@@ -9,4 +9,9 @@ adminRouter.get("/", (req, res) => {
 adminRouter.get("/login", (req, res) => {
   res.render("login"); // Render the login page
 });
+
+adminRouter.get("/update", (req, res) => {
+  res.render("update"); // Render the update page
+});
+
 module.exports = adminRouter;

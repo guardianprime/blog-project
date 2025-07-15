@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>update form</title>
+  </head>
+  <body>
+    <form action="/admin/update/<%= post._id %>" method="POST">
+      <input type="text" name="title" value="<%= post.title %>" required />
+      <label for="date">Date:</label>
+      <input
+        type="date"
+        name="date"
+        value="<%= post.date.toISOString().split('T')[0] %>"
+        required
+      />
+      <textarea name="content" required><%= post.content %></textarea>
+      <button type="submit">Update Post</button>
+    </form>
+  </body>
+</html>
