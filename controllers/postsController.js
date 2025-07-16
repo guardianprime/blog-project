@@ -12,13 +12,14 @@ async function getPostById(req, res) {
   if (!post) {
     return res.status(404).json({ message: "Post not found" });
   }
-  res.json(post);
+
+  res.status(200).json(post);
 }
 
 async function createPost(req, res) {
   const newPost = req.body;
   await posts.create(newPost);
-  res.status(201).json(newPost);
+  res.status(201).redirect("/admin");
 }
 
 async function updatePost(req, res) {
