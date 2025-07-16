@@ -6,7 +6,7 @@
     <title>edit article</title>
   </head>
   <body>
-    <form action="/admin/edit/<%= post._id %>" method="POST">
+    <form action="/admin/edit/<%= post._id %>" method="PUT">
       <input type="text" name="title" value="<%= post.title %>" required />
       <label for="date">Date:</label>
       <input

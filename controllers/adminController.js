@@ -1,15 +1,19 @@
 const postModel = require("../models/posts");
+const { getAllPosts, getPostById } = require("./postsController");
 
-function getAdminDashboard(req, res) {
-  res.render("admin"); // Render the admin dashboard
+async function getAdminDashboard(req, res) {
+  const posts = await getAllPosts(req, res);
+  res.render("admin", { posts }); // Render the admin dashboard with posts
 }
 
 function getLoginPage(req, res) {
   res.render("login"); // Render the login page
 }
 
-function getUpdatePage(req, res) {
-  res.render("update"); // Render the update page
+function getEditPage(req, res) {
+  // Fetch the post by ID from the model
+  const post = postModel.getPostById(req.params.id);
+  res.render("edit", { post }); // Render the edit page
 }
 
 function getNewPage(req, res) {
@@ -19,6 +23,6 @@ function getNewPage(req, res) {
 module.exports = {
   getAdminDashboard,
   getLoginPage,
-  getUpdatePage,
+  getEditPage,
   getNewPage,
 };

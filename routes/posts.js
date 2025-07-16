@@ -2,7 +2,14 @@ const express = require("express");
 
 const postRouter = express.Router();
 
-postRouter.get("/", (req, res) => {
+const {
+  createPost,
+  getPostById,
+  deletePost,
+  updatePost,
+} = require("../controllers/postsController");
+
+postRouter.get("/home", (req, res) => {
   res.render("index");
 });
 

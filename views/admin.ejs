@@ -14,33 +14,17 @@
     </div>
 
     <ul>
+      <% posts.forEach((post) => { %>
       <li>
         <div>
-          <p>Post Title 1</p>
+          <p><%= post.title %></p>
           <div>
-            <span>edit</span>
-            <span>delete</span>
+            <span><a href="/admin/edit/<%= post._id %>">edit</a></span>
+            <span><a href="/admin/delete/<%= post._id %>">delete</a></span>
           </div>
         </div>
       </li>
-      <li>
-        <div>
-          <p>Post Title 2</p>
-          <div>
-            <span>edit</span>
-            <span>delete</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p>Post Title 3</p>
-          <div>
-            <span>edit</span>
-            <span>delete</span>
-          </div>
-        </div>
-      </li>
+      <% }); %>
     </ul>
     <footer>
       <p>&copy; 2025 Your Blog Name</p>
