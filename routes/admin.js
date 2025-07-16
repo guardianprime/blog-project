@@ -20,7 +20,7 @@ adminRouter.get("/login", getLoginPage);
 
 adminRouter.get("/edit/:id", getEditPage);
 
-adminRouter.get("/new/:id", getNewPage);
+adminRouter.get("/new", getNewPage);
 
 adminRouter.post("/new", createPost);
 
