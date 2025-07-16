@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 db.connectToMongoDB();
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/admin", adminRouter);
 app.use("/", postRouter);

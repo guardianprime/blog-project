@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const postModel = new Schema({
   title: { type: String, required: true },
-  year: {
-    type: Number,
+  date: {
+    type: Date,
     required: true,
-    max: [new Date().getFullYear(), "Year cannot be in the future"],
+    max: [new Date(), "Date cannot be in the future"],
   },
   content: {
     type: String,
