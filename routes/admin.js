@@ -24,9 +24,7 @@ adminRouter.get("/new", getNewPage);
 
 adminRouter.post("/new", createPost);
 
-adminRouter.put("/edit/:id", updatePost);
-
-// adminRouter.get("/edit/:id", getPostById);
+adminRouter.post("/edit/:id", updatePost);
 
 adminRouter.delete("/delete/:id", deletePost);
 

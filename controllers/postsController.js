@@ -24,16 +24,18 @@ async function createPost(req, res) {
 
 async function updatePost(req, res) {
   const { id } = req.params;
-  const updatedPost = await Post.findByIdAndUpdate(id, req.body, { new: true });
+  const updatedPost = await posts.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
   if (!updatedPost) {
     return res.status(404).json({ message: "Post not found" });
   }
-  res.json(updatedPost);
+  res.status(200).redirect("/admin");
 }
 
 async function deletePost(req, res) {
   const { id } = req.params;
-  const deletedPost = await Post.findByIdAndDelete(id);
+  const deletedPost = await posts.findByIdAndDelete(id);
   if (!deletedPost) {
     return res.status(404).json({ message: "Post not found" });
   }
