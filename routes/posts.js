@@ -10,7 +10,7 @@ const {
 } = require("../controllers/postsController");
 
 postRouter.get("/home", (req, res) => {
-  res.render("index");
+  res.render("index", { posts: [] });
 });
 
 postRouter.get("/article", (req, res) => {

@@ -13,13 +13,13 @@
     <div class="posts">
       <h2>Recent Posts</h2>
       <ul>
-        <%= posts.map(post => {%>
+        <% posts.forEach(function(post) { %>
         <li>
           <a href="/articles/<%= post.id %>"
             ><%= post.title %> <span><%= post.date %></span></a
           >
         </li>
-        <% }) %>
+        <% }); %>
       </ul>
     </div>
   </body>

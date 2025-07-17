@@ -3,7 +3,7 @@ const { getAllPosts, getPostById } = require("./postsController");
 
 async function getAdminDashboard(req, res) {
   const posts = await getAllPosts(req, res);
-  res.render("admin", { posts }); // Render the admin dashboard with posts
+  res.render("admin", { posts: posts }); // Render the admin dashboard with posts
 }
 
 function getLoginPage(req, res) {
