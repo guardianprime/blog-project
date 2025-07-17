@@ -1,20 +1,18 @@
 const express = require("express");
-
+const postModel = require("../models/posts");
 const postRouter = express.Router();
 
-const {
-  createPost,
-  getPostById,
-  deletePost,
-  updatePost,
-} = require("../controllers/postsController");
-
-postRouter.get("/home", (req, res) => {
-  res.render("index", { posts: [] });
+postRouter.get("/home", async (req, res) => {
+  const posts = await postModel.find();
+  res.render("index", { posts });
 });
 
-postRouter.get("/article", (req, res) => {
-  res.render("article");
+postRouter.get("/article/:id", async (req, res) => {
+  const post = await postModel.findById(req.params.id);
+  if (!post) {
+    return res.status(404).render("404", { title: "Post Not Found" });
+  }
+  res.render("article", { post });
 });
 
 module.exports = postRouter;
