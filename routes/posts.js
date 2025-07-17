@@ -12,7 +12,8 @@ postRouter.get("/article/:id", async (req, res) => {
   if (!post) {
     return res.status(404).render("404", { title: "Post Not Found" });
   }
-  res.render("article", { post });
+
+  res.status(200).render("article", { post });
 });
 
 module.exports = postRouter;
