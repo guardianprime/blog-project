@@ -15,6 +15,7 @@ const {
 const adminRouter = express.Router();
 
 adminRouter.get("/", getAdminDashboard);
+adminRouter.get("/signup", getSignupPage);
 
 adminRouter.get("/login", getLoginPage);
 

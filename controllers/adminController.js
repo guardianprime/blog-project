@@ -20,6 +20,10 @@ function getNewPage(req, res) {
   res.render("new"); // Render the new item page
 }
 
+function getSignupPage(req, res) {
+  res.render("signup"); // Render the signup page
+}
+
 module.exports = {
   getAdminDashboard,
   getLoginPage,

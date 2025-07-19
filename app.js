@@ -1,5 +1,11 @@
 const express = require("express");
+
+const passport = require("passport");
+const EnsureLoggedIn = require("connect-ensure-login");
+const session = require("express-session");
+
 const adminRouter = require("./routes/admin");
+const adminModel = require("./models/admin");
 const postRouter = require("./routes/posts");
 require("dotenv").config();
 
@@ -10,10 +16,27 @@ const app = express();
 
 app.use(express.json());
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
+  })
+);
+
 db.connectToMongoDB();
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/admin", adminRouter);
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(adminModel.createStrategy());
+
+passport.serializeUser(adminModel.serializeUser());
+passport.deserializeUser(adminModel.deserializeUser());
+
+app.use("/admin", EnsureLoggedIn.ensureLoggedIn(), adminRouter);
 app.use("/", postRouter);
 
 app.set("view engine", "ejs");
