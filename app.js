@@ -50,6 +50,43 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+app.post("/signup", (req, res) => {
+  const user = req.body;
+  adminModel.register(
+    new adminModel({ username: req.body.username }),
+    req.body.password,
+    (err) => {
+      if (err) {
+        console.error("Error registering user:", err);
+        return res.status(500).send("Error registering user");
+      } else {
+        // User registered successfully
+        passport.authenticate("local")(req, res, () => {
+          res.redirect("/admin");
+        });
+      }
+    }
+  );
+});
+
+app.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
+  (req, res) => {
+    res.redirect("/admin");
+  }
+);
+
+app.post("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error("Error logging out:", err);
+      return res.status(500).send("Error logging out");
+    }
+    res.redirect("/home");
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on PORT: http://localhost:${PORT}`);
 });
