@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   getAdminDashboard,
-  getLoginPage,
   getEditPage,
   getNewPage,
 } = require("../controllers/adminController");
@@ -15,9 +14,6 @@ const {
 const adminRouter = express.Router();
 
 adminRouter.get("/", getAdminDashboard);
-adminRouter.get("/signup", getSignupPage);
-
-adminRouter.get("/login", getLoginPage);
 
 adminRouter.get("/edit/:id", getEditPage);
 

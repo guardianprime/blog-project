@@ -42,6 +42,14 @@ app.use("/", postRouter);
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on PORT: http://localhost:${PORT}`);
 });
