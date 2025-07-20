@@ -51,7 +51,6 @@ app.get("/signup", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-  const user = req.body;
   adminModel.register(
     new adminModel({ username: req.body.username }),
     req.body.password,
